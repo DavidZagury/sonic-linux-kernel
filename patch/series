@@ -146,6 +146,8 @@ kernel-compat-always-include-linux-compat.h-from-net-compat.patch
 0098-mlxsw-i2c-Prevent-transaction-execution-for.patch
 0163-platform-mellanox-Add-COME-board-revision-register.patch
 0167-leds-mlxreg-Send-udev-change-event.patch
+0174-core-Add-support-for-OSFP-transceiver-modules.patch
+0175-hwmon-pmbus-Add-support-for-Infineon-Digital-Multi-p.patch
 
 # Cisco patches for 5.10 kernel
 cisco-mtd-part.patch
