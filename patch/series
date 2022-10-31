@@ -149,6 +149,12 @@ kernel-compat-always-include-linux-compat.h-from-net-compat.patch
 0174-core-Add-support-for-OSFP-transceiver-modules.patch
 0175-hwmon-pmbus-Add-support-for-Infineon-Digital-Multi-p.patch
 
+0176-platform-mellanox-fix-reset_pwr_converter_fail-attri.patch
+0177-Documentation-ABI-fix-description-of-fix-reset_pwr_c.patch
+0178-platform-mellanox-Introduce-support-for-next-generat.patch
+0179-DS-iio-pressure-icp20100-add-driver-for-InvenSense-ICP-.patch
+0180-hwmon-pmbus-Fix-sensors-readouts-for-MPS-Multi-phase.patch
+
 # Cisco patches for 5.10 kernel
 cisco-mtd-part.patch
 cisco-mdio-mux-support-acpi.patch
