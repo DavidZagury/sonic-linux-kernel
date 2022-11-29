@@ -1,0 +1,94 @@
+From 17cf28fea3e3a818d3f81f0cdad6b879bc906b96 Mon Sep 17 00:00:00 2001
+From: Vadim Pasternak <vadimp@nvidia.com>
+Date: Mon, 22 Nov 2021 12:22:54 +0000
+Subject: [PATCH debug for v4.19 1/1] thermal: core: debug thermal zones
+
+Signed-off-by: Vadim Pasternak <vadimp@nvidia.com>
+---
+ drivers/thermal/step_wise.c       | 6 +++---
+ drivers/thermal/thermal_core.c    | 4 ++--
+ drivers/thermal/thermal_helpers.c | 6 +++---
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/thermal/step_wise.c b/drivers/thermal/step_wise.c
+index ee047ca43..a7310bd68 100644
+--- a/drivers/thermal/step_wise.c
++++ b/drivers/thermal/step_wise.c
+@@ -60,7 +60,7 @@ static unsigned long get_target_state(struct thermal_instance *instance,
+ 	 */
+ 	cdev->ops->get_cur_state(cdev, &cur_state);
+ 	next_target = instance->target;
+-	dev_dbg(&cdev->device, "cur_state=%ld\n", cur_state);
++	dev_info(&cdev->device, "cur_state=%ld\n", cur_state);
+ 
+ 	if (!instance->initialized) {
+ 		if (throttle) {
+@@ -149,7 +149,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
+ 		trace_thermal_zone_trip(tz, trip, trip_type);
+ 	}
+ 
+-	dev_dbg(&tz->device, "Trip%d[type=%d,temp=%d]:trend=%d,throttle=%d\n",
++	dev_info(&tz->device, "Trip%d[type=%d,temp=%d]:trend=%d,throttle=%d\n",
+ 				trip, trip_type, trip_temp, trend, throttle);
+ 
+ 	mutex_lock(&tz->lock);
+@@ -160,7 +160,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
+ 
+ 		old_target = instance->target;
+ 		instance->target = get_target_state(instance, trend, throttle);
+-		dev_dbg(&instance->cdev->device, "old_target=%d, target=%d\n",
++		dev_info(&instance->cdev->device, "old_target=%d, target=%d\n",
+ 					old_target, (int)instance->target);
+ 
+ 		if (instance->initialized && old_target == instance->target)
+diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+index 7b0ffc1c0..a6e31917e 100644
+--- a/drivers/thermal/thermal_core.c
++++ b/drivers/thermal/thermal_core.c
+@@ -444,10 +444,10 @@ static void update_temperature(struct thermal_zone_device *tz)
+ 
+ 	trace_thermal_temperature(tz);
+ 	if (tz->last_temperature == THERMAL_TEMP_INVALID)
+-		dev_dbg(&tz->device, "last_temperature N/A, current_temperature=%d\n",
++		dev_info(&tz->device, "last_temperature N/A, current_temperature=%d\n",
+ 			tz->temperature);
+ 	else
+-		dev_dbg(&tz->device, "last_temperature=%d, current_temperature=%d\n",
++		dev_info(&tz->device, "last_temperature=%d, current_temperature=%d\n",
+ 			tz->last_temperature, tz->temperature);
+ }
+ 
+diff --git a/drivers/thermal/thermal_helpers.c b/drivers/thermal/thermal_helpers.c
+index 2ba756af7..03ef378bd 100644
+--- a/drivers/thermal/thermal_helpers.c
++++ b/drivers/thermal/thermal_helpers.c
+@@ -147,7 +147,7 @@ void thermal_zone_set_trips(struct thermal_zone_device *tz)
+ 	tz->prev_low_trip = low;
+ 	tz->prev_high_trip = high;
+ 
+-	dev_dbg(&tz->device,
++	dev_info(&tz->device,
+ 		"new temperature boundaries: %d < x < %d\n", low, high);
+ 
+ 	/*
+@@ -177,7 +177,7 @@ void thermal_cdev_update(struct thermal_cooling_device *cdev)
+ 
+ 	/* Make sure cdev enters the deepest cooling state */
+ 	list_for_each_entry(instance, &cdev->thermal_instances, cdev_node) {
+-		dev_dbg(&cdev->device, "zone%d->target=%lu\n",
++		dev_info(&cdev->device, "zone%d->target=%lu\n",
+ 			instance->tz->id, instance->target);
+ 		if (instance->target == THERMAL_NO_TARGET)
+ 			continue;
+@@ -191,7 +191,7 @@ void thermal_cdev_update(struct thermal_cooling_device *cdev)
+ 	cdev->updated = true;
+ 	mutex_unlock(&cdev->lock);
+ 	trace_cdev_update(cdev, target);
+-	dev_dbg(&cdev->device, "set to state %lu\n", target);
++	dev_info(&cdev->device, "set to state %lu\n", target);
+ }
+ EXPORT_SYMBOL(thermal_cdev_update);
+ 
+-- 
+2.20.1
+
