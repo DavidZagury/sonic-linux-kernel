@@ -1,5 +1,5 @@
 # This series applies on GIT commit 18c5597832fcf6988111b05a9a1607ae148723c
-# Note: Markers should start with "###->". 
+# Note: Markers should start with "###->".
 #       Header should end with .*-start eg: any_description-start
 #       Footer must end with .*-end eg: any_description-end
 #       Markers should not be nested
@@ -154,6 +154,7 @@ Support-for-fullcone-nat.patch
 8012-hwmon-pmbus-Downstream-Workaround-for-psu-attributes.patch
 9008-platform-mellanox-Downstream-Add-support-for-new-Nvi.patch
 9009-platform-mellanox-Downstream-Add-support-DGX-flavor-.patch
+0098-platform-mellanox-mlx-dpu-improve-interrupt-handling.patch
 ###-> mellanox_hw_mgmt-end
 
 # Cisco patches for 5.10 kernel
