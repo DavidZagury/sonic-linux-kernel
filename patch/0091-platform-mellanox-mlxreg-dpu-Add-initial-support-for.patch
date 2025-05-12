@@ -1,7 +1,8 @@
-From e0e79f6b5bcd0028f2c6e47e5c8eacff514c9443 Mon Sep 17 00:00:00 2001
+From 2f247a7eaf25a3de00d6319f2b6314d0c3bf36f6 Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
-Date: Mon, 4 Dec 2023 07:12:52 +0000
-Subject: platform/mellanox: mlxreg-dpu: Add initial support for Nvidia DPU
+Date: Mon, 17 Jun 2024 00:52:00 +0300
+Subject: [PATCH backport v6.1 1/2] platform/mellanox: mlxreg-dpu: Add initial
+ support for Nvidia DPU
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -27,12 +28,12 @@ Signed-off-by: Vadim Pasternak <vadimp@nvidia.com>
 ---
  drivers/platform/mellanox/Kconfig      |  12 +
  drivers/platform/mellanox/Makefile     |   1 +
- drivers/platform/mellanox/mlxreg-dpu.c | 626 +++++++++++++++++++++++++
- 3 files changed, 639 insertions(+)
+ drivers/platform/mellanox/mlxreg-dpu.c | 625 +++++++++++++++++++++++++
+ 3 files changed, 638 insertions(+)
  create mode 100644 drivers/platform/mellanox/mlxreg-dpu.c
 
 diff --git a/drivers/platform/mellanox/Kconfig b/drivers/platform/mellanox/Kconfig
-index 018ce2833..14c14c9c2 100644
+index 6f9cb3a88d68..750c4c0905d7 100644
 --- a/drivers/platform/mellanox/Kconfig
 +++ b/drivers/platform/mellanox/Kconfig
 @@ -26,6 +26,18 @@ config MLX_PLATFORM
