@@ -152,6 +152,9 @@ Support-for-fullcone-nat.patch
 0101-platform_data-mlxreg-Add-fields-for-interrupt-storm-.patch
 0102-platform-mellanox-mlxreg-hotplug-Add-support-for-han.patch
 0103-platform-mellanox-mlx-dpu-improve-interrupt-handling.patch
+0104-hwmon-pmbus-Add-support-for-MPS-Multi-phase-mp2869-c.patch
+0105-hwmon-pmbus-Add-support-for-MPS-Multi-phase-mp29502-.patch
+0106-platform-mellanox-nvsw-bmc-Add-system-control-and-mo.patch
 8000-mlxsw-Use-weak-reverse-dependencies-for-firmware-fla.patch
 8003-mlxsw-i2c-SONIC-ISSU-Prevent-transaction-execution-f.patch
 8004-mlxsw-minimal-Downstream-Ignore-error-reading-SPAD-r.patch
@@ -163,6 +166,7 @@ Support-for-fullcone-nat.patch
 8010-mlxsw-i2c-Downstream-Add-retry-mechanism-for-failed-.patch
 8011-mlxsw-minimal-Downstream-Disable-ethtool-interface.patch
 8012-hwmon-pmbus-Downstream-Workaround-for-psu-attributes.patch
+8013-hwmon-pmbus-mp2975-Clear-interrupts-at-probe.patch
 ###-> mellanox_hw_mgmt-end
 
 # Cisco patches for 5.10 kernel
